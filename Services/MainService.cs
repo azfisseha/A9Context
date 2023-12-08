@@ -33,21 +33,36 @@ public class MainService : IMainService
                 case 1:
                     var movie = _context.GetById(InputID());
                     if (movie == null)
+                    {
                         Console.WriteLine("No movie found.");
+                    }
                     else
+                    {
                         Console.WriteLine($"Your movie is {movie.Id}: {movie.Title}");
+                    }
                     break;
                 case 2:
                     movie = _context.GetByTitle(InputTitle());
                     if (movie == null)
+                    {
                         Console.WriteLine("No movie found.");
+                    }
                     else
+                    {
                         Console.WriteLine($"Your movie is {movie.Id}: {movie.Title}");
+                    }
                     break;
                 case 3:
                     var movies = _context.FindMovie(InputTitle());
-                    Console.WriteLine($"Your movies are: ");
-                    movies.ForEach(x => Console.WriteLine($"\t{x.Id}: {x.Title}"));
+                    if (movies.Count == 0)
+                    {
+                        Console.WriteLine("No movie found.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Your movies are: ");
+                        movies.ForEach(x => Console.WriteLine($"\t{x.Id}: {x.Title}"));
+                    }
                     break;
                 case 0:
                     return;
