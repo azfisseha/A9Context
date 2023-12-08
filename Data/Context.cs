@@ -37,7 +37,7 @@ namespace ContextExample.Data
         {
             // find by title - could return more than one item
             return Movies
-                .Where(movie => movie.Title.IndexOf(title) > -1)
+                .Where(movie => movie.Title.IndexOf(title, StringComparison.OrdinalIgnoreCase) > -1)
                 .ToList();
         }
     }
